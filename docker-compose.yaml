@@ -1,0 +1,12 @@
+services:
+  chronos-db:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: chronos_db
+    ports:
+      - "5432:5432"
+  chronos-queue:
+    image: redpanda
+

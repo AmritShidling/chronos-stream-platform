@@ -1,3 +1,2 @@
-com/chronos/common/dto/TaskEvent$TaskEventBuilder.class
 com/chronos/common/model/TaskStatus.class
-com/chronos/common/dto/TaskEvent.class
+com/chronos/common/dto/UserEvent.class
