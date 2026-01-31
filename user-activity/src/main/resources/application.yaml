@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: user-activity
+  cloud:
+    function:
+      definition: userActivityConsumer
+    stream:
+      bindings:
+        userActivityConsumer-in-0:
+          destination: userActivity-out-0
+          group: user-service-group
+      kafka:
+        binder:
+          broker: localhost:9092
+server:
+  port: 8083
