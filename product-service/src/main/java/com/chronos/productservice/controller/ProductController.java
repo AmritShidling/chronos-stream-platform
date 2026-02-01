@@ -24,7 +24,7 @@ public class ProductController {
     public ResponseEntity<String> publishActivity(@RequestBody UserEvent event){
         try{
             UserEvent userEvent = new UserEvent(
-                    UUID.randomUUID().toString(),
+                    event.eventId(),
                     event.userId(),
                     event.action(),
                     event.pageUrl(),
@@ -33,6 +33,7 @@ public class ProductController {
             );
 
             boolean sent = streamBridge.send("userActivity-out-0", event);
+            log.info("Sending event {}, {}, {}, {}" , event.eventId(), event.userId(), event.action(), event.pageUrl());
             if(sent){
                 return ResponseEntity.ok("Event streamed successfully");
             }

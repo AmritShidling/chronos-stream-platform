@@ -1,16 +1,14 @@
 spring:
-  application:
-    name: user-activity
   cloud:
     function:
-      definition: userActivityConsumer
+      definition: userActivityConsumer # MUST match your @Bean method name
     stream:
       bindings:
-        userActivityConsumer-in-0:
-          destination: userActivity-out-0
-          group: user-service-group
+        userActivityConsumer-in-0: # Format: <functionName>-in-0
+          destination: userActivity-out-0 # MUST match what you see in Kafka-UI
+          group: user-activity-group # This creates the consumer group in Kafka
       kafka:
         binder:
-          broker: localhost:9092
+          brokers: localhost:9092
 server:
   port: 8083
