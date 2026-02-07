@@ -10,5 +10,10 @@ spring:
       kafka:
         binder:
           brokers: localhost:9092
+        bindings:
+          analyticsConsumer-in-0:
+            consumer:
+              enableDlq: true
+              dlqName: userActivity.DLQ
 server:
   port: 8084
